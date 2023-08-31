@@ -1,15 +1,17 @@
-
+import React from 'react';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './Components/Login/Login';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <p className='test-[#000]'>hjkhcgxfdasasdzrsefbxgf</p>
-      
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
-
-
+export default App
