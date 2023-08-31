@@ -4,6 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <p className='test-[#000]'>hjkhcgxfdasasdzrsefbxgf</p>
       
     </div>
   );
@@ -11,5 +12,4 @@ function App() {
 
 export default App;
 
-// npm install -D tailwindcss postcss autoprefixer
-// npx tailwindcss init
+
