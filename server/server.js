@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import { ErrorHandler } from "./utils/ErrorHandler.js"
 
 const app = express();
 dotenv.config();
@@ -23,6 +24,10 @@ const connect = async () => {
     console.log("mongoDb Connected!")
     })
 
+// middlewares
+
+// it's for ErrorHandling
+app.use(ErrorHandler);  
 
 app.listen(8080, () => {
     connect();
