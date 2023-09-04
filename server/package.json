@@ -2,11 +2,11 @@
   "name": "multi-vendor-website",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
-  "type": "commonjs",
+  "main": "backend.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon server/server.js",
-    "start": "node server/server.js"
+    "dev": "nodemon server.js",
+    "start": "nodemon server.js"
   },
   "author": "Justina",
   "license": "ISC",

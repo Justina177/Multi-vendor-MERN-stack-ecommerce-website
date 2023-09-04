@@ -1,39 +1,31 @@
+import express from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
 
-// import connectDatabase from "./db/Database.js";
-
-const app = ("app");
-
-// Handling uncaught Exception
-process.on("uncaughtException", (err) => {
-  console.log(`Error: ${err.message}`);
-  console.log(`shutting down the server for handling uncaught exception`);
-});
-
-// config
-if (process.env.NODE_ENV !== "PRODUCTION") {
-  require("dotenv").config({
-    path: "backend/config/.env",
-  });
-}
+const app = express();
+dotenv.config();
 
 
-// create server
+const connect = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO);
+        console.log("connected to MongoDB")
+    } catch (error) {
+        throw error;
+    }
+    };
+    // test to see if app is connected to db by addind or delecting ip address
+    mongoose.connection.on("disconnected", ()=> {
+        console.log("mongoDb Disconnected!")
+    })
+    
+    mongoose.connection.on('connected', ()=>{
+    console.log("mongoDb Connected!")
+    })
 
-// const server = app.listen(process.env.PORT,() => {
-//   console.log(
-//     `Server is running on http://localhost:${process.env.PORT}`
-//   );
-// });
 
-
-// unhandled promise rejection
-process.on("unhandledRejection", (err) => {
-  console.log(`Shutting down the server for ${err.message}`);
-  console.log(`shutting down the server for unhandle promise rejection`);
-
-  server.close(() => {
-    process.exit(1);
-  });
-});
-
+app.listen(8080, () => {
+    connect();
+    console.log("server running at port 8000")
+})
 
